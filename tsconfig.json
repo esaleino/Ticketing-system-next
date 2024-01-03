@@ -19,9 +19,15 @@
 			}
 		],
 		"paths": {
-			"@/*": ["./src/*", "./src/app/*"]
+			"@/*": ["./src/*", "./src/app/*", "./src/lib/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"src/app/_error/401.js"
+	],
 	"exclude": ["node_modules"]
 }
