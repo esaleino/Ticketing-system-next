@@ -13,5 +13,9 @@ const loginForm = {
 	]
 };
 export default function Login() {
-	return <FormBuilder layout={loginForm} />;
+	return (
+		<main className='container mx-auto my-2'>
+			<FormBuilder layout={loginForm} />
+		</main>
+	);
 }

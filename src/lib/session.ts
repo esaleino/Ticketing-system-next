@@ -9,6 +9,10 @@ export interface SessionData {
 	sessionId?: string;
 }
 
+export interface ClientSession {
+	session: SessionData;
+}
+
 export const defaultSession: SessionData = {
 	username: '',
 	isLoggedIn: false

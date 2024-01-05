@@ -12,7 +12,11 @@ export default function FormBuilder({ layout }: Layout) {
 		buildForm();
 	}); */
 
-	return <BuildForm layout={layout} />;
+	return (
+		<div>
+			<BuildForm layout={layout} />
+		</div>
+	);
 }
 
 function BuildForm({ layout }: Layout) {
