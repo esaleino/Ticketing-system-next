@@ -50,10 +50,12 @@ export function createSession(data: SessionData) {
 		sessionId = Math.random().toString(36).substring(2, 15);
 	}
 	sessionStorage[sessionId] = session;
+	console.log('sessionStorage: ', sessionStorage);
 	return { sessionId, userId };
 }
 
 export function getSession(data: SessionData) {
+	console.log('sessionStorage', sessionStorage);
 	const response = <SessionStatus>{};
 	if (data.sessionId && sessionStorage[data.sessionId]) {
 		const session = sessionStorage[data.sessionId];

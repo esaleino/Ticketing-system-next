@@ -36,8 +36,8 @@ export default async function RootLayout({
 			</head>
 
 			<body className={(inter.className, body)}>
-				{JSON.stringify(session)}
 				<TopNav session={session} />
+				{JSON.stringify(session)}
 				{children}
 			</body>
 		</html>

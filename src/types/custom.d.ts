@@ -12,6 +12,10 @@ interface FieldProps {
 }
 
 interface LayoutProps {
+	title: string;
+	formAction: string;
+	formTarget: string;
+	forgot?: boolean;
 	rows: FieldProps[][];
 }
 

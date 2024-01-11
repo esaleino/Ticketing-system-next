@@ -6,8 +6,11 @@ const config: Config = {
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
-		'./node_modules/flowbite-react/lib/**/*.js'
+		'./node_modules/flowbite-react/lib/**/*.js',
+		'./src/lib/*.{js,jsx,ts,tsx,vue}'
 	],
+
+	mode: 'jit',
 	theme: {
 		screens: {
 			sm: '480px',
@@ -15,9 +18,12 @@ const config: Config = {
 			lg: '900px',
 			xl: '1440px'
 		},
+
 		colors: {
-			primaryBgLight: colors.sky[800],
-			primaryBgDark: colors.gray[800],
+			primaryBgLight: colors.sky[700],
+			primaryBgDark: colors.gray[900],
+			navbarBgDark: colors.gray[800],
+			navbarBgLight: colors.sky[600],
 			formBgLight: colors.gray[50],
 			formBgDark: colors.gray[700],
 			borderLight: colors.gray[200],

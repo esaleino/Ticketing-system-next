@@ -3,7 +3,7 @@ import { getSession, sessionOptions, SessionData } from '@/lib/session';
 import { cookies } from 'next/headers';
 import { getIronSession } from 'iron-session';
 
-export async function fetchSession() {
+/* export async function fetchSession() {
 	return fetch('api/getUser')
 		.then((res) => res.json())
 		.then((data) => {
@@ -11,3 +11,4 @@ export async function fetchSession() {
 			return data;
 		});
 }
+ */

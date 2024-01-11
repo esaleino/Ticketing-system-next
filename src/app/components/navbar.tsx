@@ -5,8 +5,8 @@ import { Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import Spinner from '@/components/loadingSpinner';
-const navbarLinkClass =
-	'whitespace-nowrap text-lg font-semibold text-white hover:text-gray-200';
+import { Navbarstyles } from '@/styles';
+
 const DarkThemeToggle = dynamic(
 	() => import('flowbite-react').then((mod) => mod.DarkThemeToggle),
 	{
@@ -23,7 +23,7 @@ export default function TopNav({ session }: ClientSession) {
 		return {
 			href: '#',
 			onClick: () => navigateTo(path),
-			className: `${navbarLinkClass}`
+			className: `${Navbarstyles.link}`
 		};
 	};
 	return (
@@ -31,24 +31,22 @@ export default function TopNav({ session }: ClientSession) {
 			<Navbar
 				fluid={true}
 				rounded={true}
-				className='bg-primaryLight dark:bg-primaryDark'
+				className='bg-navbarBgLight dark:bg-navbarBgDark'
 			>
 				<Navbar.Brand href='#' onClick={() => navigateTo('/')}>
-					<span className='self-center whitespace-nowrap text-xl font-semibold text-white'>
-						Random Chat
-					</span>
+					<span className={Navbarstyles.brand}>Ticketing System</span>
 				</Navbar.Brand>
 				<Navbar.Toggle />
+
 				<Navbar.Collapse>
-					<Navbar.Link {...navLinkAttributes('/chat')}>Chat</Navbar.Link>
 					<Navbar.Link {...navLinkAttributes('/about')}>About</Navbar.Link>
+
 					<Navbar.Link {...navLinkAttributes('/contact')}>Contact</Navbar.Link>
 					<RenderDropdown session={session} navigate={navLinkAttributes} />
+					<Suspense>
+						<DarkThemeToggle />
+					</Suspense>
 				</Navbar.Collapse>
-
-				<Suspense>
-					<DarkThemeToggle />
-				</Suspense>
 			</Navbar>
 		</Flowbite>
 	);
@@ -69,7 +67,7 @@ function RenderDropdown({
 					arrowIcon={false}
 					inline
 					label={
-						<Navbar.Link className={`${navbarLinkClass}`}>
+						<Navbar.Link className={`${Navbarstyles.link}`}>
 							{session.username}
 						</Navbar.Link>
 					}

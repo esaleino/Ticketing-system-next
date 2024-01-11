@@ -10,16 +10,26 @@ import {
 	createSession,
 	getSession
 } from '@/lib/session';
+import { loginHandler } from './components/userHandler';
+
 export async function POST(request: NextRequest) {
+	const jsonData = await request.json();
 	const session = await getIronSession<SessionData>(cookies(), sessionOptions);
-	const formData = await request.formData();
+	console.log(jsonData);
+	const loggedIn = await loginHandler(jsonData);
+	if (!loggedIn) {
+		return Response.json({
+			error: true,
+			message: 'Wrong username or password'
+		});
+	}
 	session.isLoggedIn = true;
-	session.username = (formData.get('username') as string) ?? 'No username';
+	session.username = jsonData.username;
 	const res = await createSession(session);
 	session.userId = res.userId;
 	session.sessionId = res.sessionId;
 	await session.save();
-	return Response.redirect(`${request.nextUrl.origin}/pager`, 303);
+	return Response.redirect(`${request.nextUrl.origin}/`, 303);
 }
 export async function GET(request: NextRequest) {
 	const session = await getIronSession<SessionData>(cookies(), sessionOptions);
